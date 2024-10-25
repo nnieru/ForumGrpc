@@ -55,4 +55,39 @@ public class TodoService: Todo.TodoBase
             ToDoStatus = todoItem.Status
         };
     }
+
+    public override async Task<GetAllResponse> ListTodo(GetAllRequest request, ServerCallContext context)
+    {
+        var response = new GetAllResponse();
+        
+        response.ToDo.Add(new ReadTodoResponse
+        {
+            Id = 1,
+            Title = "Test 1",
+            Description = "Test 1 Desc",
+            ToDoStatus = "New"
+        });
+        response.ToDo.Add(new ReadTodoResponse
+        {
+            Id = 2,
+            Title = "Test 2",
+            Description = "Test 2 Desc",
+            ToDoStatus = "New"
+        });
+        response.ToDo.Add(new ReadTodoResponse
+        {
+            Id = 3,
+            Title = "Test 3",
+            Description = "Test 3 Desc",
+            ToDoStatus = "New"
+        });
+        response.ToDo.Add(new ReadTodoResponse
+        {
+            Id = 4,
+            Title = "Test 4",
+            Description = "Test 4 Desc",
+            ToDoStatus = "New"
+        });
+        return await Task.FromResult(response);
+    }
 }
